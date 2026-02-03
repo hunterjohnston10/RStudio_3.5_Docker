@@ -14,9 +14,9 @@ services:
     ports:
       - "${PORT}:8787"
     environment:
-      PASSWORD: curly
+      PASSWORD: ${PASSWORD}
     volumes:
-      - /Users/hunter/Documents/PhD/docker_containers/r/r-3.x/files:/home/rstudio/${USER}
+      - ${VOLUME}
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8787 || exit 1"]
       interval: 10s
