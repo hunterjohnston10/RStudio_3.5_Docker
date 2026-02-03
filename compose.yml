@@ -1,0 +1,25 @@
+name: r-studio-3
+
+services:
+  rstudio:
+    build:
+      context: .
+      args:
+        VERSION: ${VERSION}
+        BUILD_DATE: ${BUILD_DATE}
+        RSTUDIO_VERSION: ${RSTUDIO_VERSION}
+        GITHUB_INSTALL_PACKAGES: ${GITHUB_INSTALL_PACKAGES}
+        CRAN_INSTALL_PACKAGES: ${CRAN_INSTALL_PACKAGES}
+        USER: ${USER}
+    ports:
+      - "${PORT}:8787"
+    environment:
+      PASSWORD: curly
+    volumes:
+      - /Users/hunter/Documents/PhD/docker_containers/r/r-3.x/files:/home/rstudio/${USER}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8787 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s

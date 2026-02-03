@@ -1,0 +1,5 @@
+# ignore created env file
+.env
+
+# ignore un-needed directories
+files/
